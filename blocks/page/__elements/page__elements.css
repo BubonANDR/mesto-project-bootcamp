@@ -1,0 +1,17 @@
+.page__elements {
+  margin: 0 200px;
+  padding: 47px 0 0 0;
+  width: auto;
+  height: auto;
+}
+
+@media (max-width: 1050px) {
+  .page__elements {
+    margin: 0 150px;
+  }
+}
+@media (max-width: 650px) {
+  .page__elements {
+    margin: 0 19px;
+  }
+}

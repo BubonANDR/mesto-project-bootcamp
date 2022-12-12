@@ -1,0 +1,10 @@
+.photo-grid__item {
+  display: flex;
+  flex-direction: column;
+  max-width:282px;
+  height: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}

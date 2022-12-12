@@ -1,0 +1,20 @@
+.page__profile{
+    margin: 0 200px;
+    padding: 40px 0 0 0;
+   
+  }
+  
+  
+  @media (max-width: 1050px) {
+    .page__profile {
+      margin: 0 150px;
+      padding: 35px 0 0 0;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .page__profile {
+      margin: 0 19px;
+      padding: 42px 0 0 0;
+    }
+  }

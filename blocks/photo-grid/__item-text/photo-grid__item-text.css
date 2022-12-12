@@ -1,0 +1,13 @@
+.photo-grid__item-text{
+display: flex;
+justify-content: space-between;
+justify-items: stretch;
+align-items: center;
+padding: 25px 15px 31px 21px;
+max-width:246px;
+height: auto;
+color: #000000;
+max-height: 79px;
+background-color: #FFFFFF;
+border-radius:0 0 10px 10px;
+}
