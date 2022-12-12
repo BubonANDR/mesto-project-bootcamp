@@ -6,4 +6,4 @@
 
 - Дальнейшее развитие проекта предполагает добавление элементов JS. 
 
-- проект на GITHUB PAGES: 
+- проект на GITHUB PAGES: https://bubonandr.github.io/mesto-project-bootcamp/index.html
