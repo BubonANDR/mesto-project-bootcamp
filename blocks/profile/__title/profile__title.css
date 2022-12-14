@@ -6,13 +6,18 @@
   font-weight: 500;
   font-size: 42px;
   line-height: 114%;
-  width: auto;
-}
+  max-width: 294px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  }
 
 @media (max-width: 1050px) {
   .profile__title {
-    font-size: 36px;
-    text-align: center;
+    font-size: 27px;
+    line-height: 33px;
+    max-width: 189px;
+    align-self: center;
   }
 }
 
@@ -20,5 +25,6 @@
   .profile__title {
     font-size: 27px;
     line-height: 33px;
+    max-width: 189px;
   }
 }

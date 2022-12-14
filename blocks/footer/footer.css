@@ -1,13 +1,21 @@
-.footer{
-    width: 318px;
-    height: 18px;
-        
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
-    
-    color: #545454;
+.footer {
+  width: 318px;
+  height: 18px;
 
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+
+  color: #545454;
+}
+
+@media (max-width: 650px) {
+  .footer {
+    width: 282px;
+    height: 14px;
+    font-size: 14px;
+    line-height: 17px;
+  }
 }

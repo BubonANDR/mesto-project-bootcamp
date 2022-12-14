@@ -3,9 +3,10 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  grid-template-columns: repeat(3, minmax(min-content, 282px));
-  grid-template-rows: repeat(2, minmax(min-content, 381px));
-  gap: 17px 20px;
+  grid-template-columns: repeat(3, minmax(min-content, max-content));
+  grid-template-rows: repeat(2, minmax(min-content, max-content));
+  gap: 20px 17px;
+  border: 0;
 
   background-color: black;
 }
@@ -20,7 +21,7 @@
 @media (max-width: 650px) {
   .photo-grid {
     grid-template-columns: repeat(1, minmax(282px, max-content));
-    grid-template-rows: repeat(6, minmax(min-content, max-content));
+    grid-template-rows: repeat(6, minmax(min-content, 361px));
     gap: 20px;
   }
 }

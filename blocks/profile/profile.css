@@ -16,5 +16,6 @@
 @media (max-width: 650px) {
   .profile {
     width: calc(100% - 38px);
+    
   }
 }

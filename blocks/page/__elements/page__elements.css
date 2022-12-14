@@ -13,5 +13,6 @@
 @media (max-width: 650px) {
   .page__elements {
     margin: 0 19px;
+    padding: 36px 0 0 0;
   }
 }

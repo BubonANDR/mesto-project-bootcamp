@@ -1,5 +1,7 @@
 .profile__button {
-  margin-left: 18px;
+  position: absolute;
+  right: 0px;
+  top:36px;
   box-sizing: border-box;
   width: 24px;
   height: 24px;
@@ -13,7 +15,8 @@
 
 @media (max-width: 650px) {
   .profile__button {
-    margin-left: 10px;
+    top:33px;
+    right: 20px;
     width: 18px;
     height: 18px;
   }
