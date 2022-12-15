@@ -1,10 +1,9 @@
 .photo-grid__item {
   display: flex;
   flex-direction: column;
-  max-width:282px;
-  height: auto;
+  width: 282px;
+  box-sizing: border-box;
   list-style: none;
   margin: 0;
   padding: 0;
-
 }

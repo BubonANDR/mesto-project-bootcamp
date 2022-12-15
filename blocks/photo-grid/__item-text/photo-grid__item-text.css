@@ -5,9 +5,8 @@ justify-items: stretch;
 align-items: center;
 padding: 30px 20px 31px 21px;
 max-width:246px;
-height:19px;
+padding-bottom: 22px;
 color: #000000;
-max-height: 79px;
 background-color: #FFFFFF;
 border-radius:0 0 10px 10px;
 }
