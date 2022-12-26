@@ -70,7 +70,7 @@ function deleteCard(event) {
   console.log(event.target);
   event.target.closest(".photo-grid__item").remove();
 }
-function openPicture(event) {
+function likePicture(event) {
   console.log(event.target);
   event.target
     .closest(".photo-grid__like-button")
@@ -87,6 +87,10 @@ for (i = 0; i < initialCards.length; i++) {
   card
     .querySelector(".photo-grid__item-image")
     .addEventListener("click", openPicture);
+  card
+    .querySelector(".photo-grid__like-button")
+    .addEventListener("click", likePicture);
+
   photoGrid.append(card);
 }
 
@@ -106,6 +110,9 @@ const addProfile = addCardButton.addEventListener("click", function () {
   card
     .querySelector(".photo-grid__delete-button")
     .addEventListener("click", deleteCard);
+  card
+    .querySelector(".photo-grid__like-button")
+    .addEventListener("click", likePicture);
 
   formElement.addEventListener("submit", function (evt) {
     photoGrid.prepend(card);
