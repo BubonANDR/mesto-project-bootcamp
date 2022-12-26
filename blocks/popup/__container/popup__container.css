@@ -1,6 +1,6 @@
 .popup__container {
   position: relative;
-  max-width: 360px;
+  
   height: auto;
   margin: 195px auto auto auto ;
   display: flex;

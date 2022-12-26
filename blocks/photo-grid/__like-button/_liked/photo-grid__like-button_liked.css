@@ -1,0 +1,4 @@
+.photo-grid__like-button_liked {
+    background-image: url(../../../../images/PHOTO-GRID/blackheart.svg);
+    transition: 0.5s;
+  }

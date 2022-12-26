@@ -1,5 +1,5 @@
 .popup {
-  display: none;
+  display: flex;
   flex-direction: column;
   position: fixed;
   justify-content: center;
@@ -10,6 +10,15 @@
   top: 0px;
   background: rgb(0,0,0,0.5);
   z-index: 1;
+  opacity: 0;
+  visibility:hidden;
+ 
+ 
+
+
+
+
+
   }
 
   @media (max-width:650px){

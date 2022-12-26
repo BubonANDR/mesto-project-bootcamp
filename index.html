@@ -33,120 +33,30 @@
         <button
           type="button"
           class="profile__add-button"
-          aria-label="Добавить профиль"
+          aria-label="Добавить место"
         ></button>
       </section>
 
       <section class="elements page__elements">
-        <ul class="photo-grid">
-          <li class="photo-grid__item">
-            <img
-              class="photo-grid__item-image"
-              src="./images/PHOTO-GRID/kirill-pershin-1088404-unsplash.jpg"
-              alt="фото Карачаевск"
-            />
-            <div class="photo-grid__item-text">
-              <h2 class="photo-grid__title">Карачаевск</h2>
-              <button
-                class="photo-grid__like-button"
-                aria-label="Кнопка лайк-сердце"
-              ></button>
-            </div>
-          </li>
-
-          <li class="photo-grid__item">
-            <img
-              class="photo-grid__item-image"
-              src="./images/PHOTO-GRID/kirill-pershin-1404681-unsplash.jpg"
-              alt="фото Эльбрус"
-            />
-            <div class="photo-grid__item-text">
-              <h2 class="photo-grid__title">Гора Эльбрус</h2>
-              <button
-                class="photo-grid__like-button"
-                aria-label="Кнопка лайк-сердце"
-              ></button>
-            </div>
-          </li>
-
-          <li class="photo-grid__item">
-            <img
-              class="photo-grid__item-image"
-              src="./images/PHOTO-GRID/kirill-pershin-1556355-unsplash.jpg"
-              alt="фото Домбай"
-            />
-            <div class="photo-grid__item-text">
-              <h2 class="photo-grid__title">Домбай</h2>
-              <button
-                class="photo-grid__like-button"
-                aria-label="Кнопка лайк-сердце"
-              ></button>
-            </div>
-          </li>
-
-          <li class="photo-grid__item">
-            <img
-              class="photo-grid__item-image"
-              src="./images/PHOTO-GRID/kirill-pershin-1404681-unsplash.jpg"
-              alt="фото Эльбрус"
-            />
-            <div class="photo-grid__item-text">
-              <h2 class="photo-grid__title">Гора Эльбрус</h2>
-              <button
-                class="photo-grid__like-button"
-                aria-label="Кнопка лайк-сердце"
-              ></button>
-            </div>
-          </li>
-
-          <li class="photo-grid__item">
-            <img
-              class="photo-grid__item-image"
-              src="./images/PHOTO-GRID/kirill-pershin-1556355-unsplash.jpg"
-              alt="фото Домбай"
-            />
-            <div class="photo-grid__item-text">
-              <h2 class="photo-grid__title">Домбай</h2>
-              <button
-                class="photo-grid__like-button"
-                aria-label="Кнопка лайк-сердце"
-              ></button>
-            </div>
-          </li>
-
-          <li class="photo-grid__item">
-            <img
-              class="photo-grid__item-image"
-              src="./images/PHOTO-GRID/kirill-pershin-1088404-unsplash.jpg"
-              alt="фото Карачаевск"
-            />
-            <div class="photo-grid__item-text">
-              <h2 class="photo-grid__title">Карачаево-Черкессия</h2>
-              <button
-                class="photo-grid__like-button"
-                aria-label="Кнопка лайк-сердце"
-              ></button>
-            </div>
-          </li>
-        </ul>
+        <ul class="photo-grid"></ul>
       </section>
     </main>
     <footer lang="en" class="footer page__footer">
       <p class="footer__title">&#169; 2020 Mesto Russia</p>
     </footer>
-    <div class="popup popup_opened">
+    <div class="popup popup__profile">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup_form" name="форма профиля">
           <input
-            class="popup__input"
+            class="popup__input name__input"
             type="text"
             name="name"
-            value="Имя профиля"
+            value="Новое место"
           />
 
           <input
-            class="popup__input"
+            class="popup__input job__input"
             type="text"
             name="name"
             value="Описание профиля"
@@ -161,5 +71,66 @@
         ></button>
       </div>
     </div>
+    <div class="popup popup__add-card">
+      <div class="popup__container">
+        <h2 class="popup__title">Новое место</h2>
+        <form class="popup_form" name="форма профиля">
+          <input
+            class="popup__input card-name__input"
+            type="text"
+            name="name"
+            value="Название"
+          />
+
+          <input
+            class="popup__input card-link__input"
+            type="text"
+            name="name"
+            value="Ссылка на картинку"
+          />
+
+          <button class="popup__save-button" type="submit">Сохранить</button>
+        </form>
+        <button
+          type="button"
+          class="popup__close-button"
+          aria-label="Крестик закрытия формы"
+        ></button>
+      </div>
+    </div>
+
+    <div class="popup popup__place-picture">
+      <div class="popup__container popup__container_pictured">
+        <h2 class="popup__picture-title">место</h2>
+        <img class="popup__picture" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg">
+        <button
+          type="button"
+          class="popup__close-button"
+          aria-label="Крестик закрытия формы"
+        ></button>
+      </div>
+    </div>
+
+
+    <template id="grid-item">
+      <li class="photo-grid__item">
+        <img class="photo-grid__item-image" src="#" alt="фото" />
+        <div class="photo-grid__item-text">
+          <h2 class="photo-grid__title"></h2>
+          <button
+            class="photo-grid__like-button"
+            aria-label="Кнопка лайк-сердце"
+          ></button>
+        </div>
+        <div class="photo-grid__delete-area">
+          <button
+            class="photo-grid__delete-button"
+            aria-label="Корзина удаления"
+          ></button>
+        </div>
+      </li>
+    </template>
+
+    <script src="./script.js"></script>
   </body>
 </html>
