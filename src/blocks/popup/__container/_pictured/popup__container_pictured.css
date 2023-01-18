@@ -1,0 +1,9 @@
+.popup__container_pictured {
+  position: fixed;
+  padding: 0;
+  border-radius: 0px;
+  margin: auto;
+  max-width: 75vw;
+  max-height: 75vh;
+  width: auto
+}

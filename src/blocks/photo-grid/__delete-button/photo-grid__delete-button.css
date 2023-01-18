@@ -1,0 +1,9 @@
+.photo-grid__delete-button{
+    width: 100%;
+    height: 100%;
+    opacity: 0.0;
+    background-color: #000000;
+}
+.photo-grid__delete-button:hover{
+cursor: pointer;    
+}
