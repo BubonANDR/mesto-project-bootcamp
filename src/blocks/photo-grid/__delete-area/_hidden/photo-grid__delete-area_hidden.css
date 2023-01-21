@@ -1,0 +1,4 @@
+.photo-grid__delete-area_hidden{
+    z-index: -5;
+    visibility: hidden;
+}

@@ -1,0 +1,13 @@
+.profile__edit{
+    position: absolute;
+   width: 26px;
+   height: 26px;
+   top:47px;
+   left: 47px;
+   z-index: -1;
+}  
+
+@media (max-width: 1050px) {
+    .profile__edit{
+    left: auto;
+    }}

@@ -4,7 +4,7 @@
     <title lang="en">Mesto Russia</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="stylesheet" href="./pages/index.css" />
   </head>
 
   <body class="page">
@@ -18,7 +18,9 @@
     <main class="main">
       <section class="profile page__profile">
         <div class="profile__container">
-          <img class="profile__avatar" src="<%=require('./images/JKUSTO.jpg')%>" alt="Аватар" />
+          <img class="profile__avatar" src="#" alt="Аватар" />
+          <img class="profile__edit" src="<%=require('./images/Vector.svg')%>" 
+          alt ="редактировать"/>
           <div class="profile__content">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button
@@ -51,7 +53,12 @@
     <div class="popup popup__profile">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form name="profileform" id="profile-form" class="popup__form" novalidate>
+        <form
+          name="profileform"
+          id="profile-form"
+          class="popup__form"
+          novalidate
+        >
           <input
             class="popup__input name__input"
             type="text"
@@ -59,7 +66,9 @@
             id="nameinput"
             value=""
             placeholder="Имя"
-            required minlength="2" maxlength="40"
+            required
+            minlength="2"
+            maxlength="40"
           />
           <span id="nameinput-error" class="popup__error"></span>
           <input
@@ -69,10 +78,12 @@
             id="aboutinput"
             value=""
             placeholder="О себе"
-            required minlength="2" maxlength="200"
+            required
+            minlength="2"
+            maxlength="200"
           />
           <span id="aboutinput-error" class="popup__error"></span>
-          <button class="popup__button" type="submit" >Сохранить</button>
+          <button class="popup__button" type="submit">Сохранить</button>
         </form>
 
         <div class="popup__close-area">
@@ -96,7 +107,9 @@
             id="placeinput"
             value=""
             placeholder="Название"
-            required minlength="2" maxlength="30"
+            required
+            minlength="2"
+            maxlength="30"
           />
           <span id="placeinput-error" class="popup__error"></span>
           <input
@@ -106,10 +119,36 @@
             id="placelink"
             value=""
             placeholder="Ссылка на картинку"
-            required 
+            required
           />
           <span id="placelink-error" class="popup__error"></span>
-          <button class="popup__button " type="submit" >Сохранить</button>
+          <button class="popup__button" type="submit">Сохранить</button>
+        </form>
+        <div class="popup__close-area">
+          <button
+            type="button"
+            class="popup__close-button"
+            aria-label="Крестик закрытия формы"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup popup__edit-avatar">
+      <div class="popup__container popup__container_avatar">
+        <h2 class="popup__title">Обновите аватар</h2>
+        <form class="popup__form" name="avatarform" novalidate>
+          <input
+            class="popup__input avatar-link__input"
+            type="url"
+            name="avatarlink"
+            id="avatarlink"
+            value=""
+            placeholder="Ссылка на аватар"
+            required
+          />
+          <span id="avatarlink-error" class="popup__error"></span>
+          <button class="popup__button" type="submit">Сохранить</button>
         </form>
         <div class="popup__close-area">
           <button
@@ -136,14 +175,17 @@
     </div>
 
     <template id="grid-item">
-      <li class="photo-grid__item">
+      <li class="photo-grid__item" id="">
         <img class="photo-grid__item-image" src="#" alt="фото" />
         <div class="photo-grid__item-text">
           <h2 class="photo-grid__title"></h2>
-          <button
-            class="photo-grid__like-button"
-            aria-label="Кнопка лайк-сердце"
-          ></button>
+          <div class="photo-grid__like-area">
+            <button
+              class="photo-grid__like-button"
+              aria-label="Кнопка лайк-сердце"
+            ></button>
+            <p class="photo-grid__liked-count">0</p>
+          </div>
         </div>
         <div class="photo-grid__delete-area">
           <button
@@ -154,7 +196,6 @@
       </li>
     </template>
 
-    <script type ='module' src="./components/index.js"></script>
-    
+    <script type="module" src="./components/index.js"></script>
   </body>
 </html>

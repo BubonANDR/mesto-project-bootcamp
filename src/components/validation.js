@@ -68,3 +68,17 @@ export const enableValidation = (cnfg) => {
     setEventListeners(formElement, cnfg);
   });
 };
+
+export const openClear = (somepopup) => {
+  somepopup.querySelector(".popup__form").reset();
+  const arrErrors = Array.from(
+    somepopup.querySelectorAll(".popup__input_type_error")
+  );
+  arrErrors.forEach((elem) => {
+    elem.classList.remove("popup__input_type_error");
+    somepopup.querySelector(`#${elem.id}-error`).textContent = "";
+  });
+  const btn = somepopup.querySelector(".popup__button");
+  btn.disabled = true;
+  btn.classList.add("popup__button_disabled");
+};

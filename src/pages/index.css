@@ -26,7 +26,9 @@
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/page/__profile/page__profile.css);
 @import url(../blocks/profile/__container/profile__container.css);
+@import url(../blocks/popup/__container/_avatar/popup__container_avatar.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__edit/profile__edit.css);
 @import url(../blocks/profile/__content/profile__content.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__title/profile__title.css);
@@ -39,8 +41,11 @@
 @import url(../blocks/photo-grid/__item-text/photo-grid__item-text.css);
 @import url(../blocks/photo-grid/__like-button/photo-grid__like-button.css);
 @import url(../blocks/photo-grid/__like-button/_liked/photo-grid__like-button_liked.css);
+@import url(../blocks/photo-grid/__like-area/photo-grid__like-area.css);
+@import url(../blocks/photo-grid/__liked-count/photo-grid__liked-count.css);
 @import url(../blocks/photo-grid/__title/photo-grid__title.css);
 @import url(../blocks/photo-grid/__delete-area/photo-grid__delete-area.css);
+@import url(../blocks/photo-grid/__delete-area/_hidden/photo-grid__delete-area_hidden.css);
 @import url(../blocks/photo-grid/__delete-button/photo-grid__delete-button.css);
 @import url(../blocks/page/__footer/page__footer.css);
 @import url(../blocks/footer/footer.css);
