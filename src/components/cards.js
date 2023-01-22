@@ -1,28 +1,45 @@
 import { openPicture } from "./modal.js";
-import { deleteCardFromServer, myOwnerId,putLike,deleteLike} from "./api.js";
+import { deleteCardFromServer, myOwnerId, putLike, deleteLike } from "./api.js";
 
 function deleteCard(event) {
-  const idForDel=event.target.closest(".photo-grid__item").querySelector(".photo-grid__item-image").id;
-  deleteCardFromServer(idForDel);
-  event.target.closest(".photo-grid__item").remove();
-}
-function likePicture(event) {
-  const idForLike =event.target.closest(".photo-grid__item").querySelector(".photo-grid__item-image").id;
-  const like = event.target.closest(".photo-grid__like-button")
-    .classList.toggle("photo-grid__like-button_liked");
-  const likesCount =event.target.closest(".photo-grid__like-area").querySelector(".photo-grid__liked-count");
-  if (like) {
-     putLike(idForLike);
-    
-     likesCount.textContent = Number(likesCount.textContent)+1;
-  } else {
-     deleteLike(idForLike);
-     likesCount.textContent = Number(likesCount.textContent)-1;
-  }
-  
-  
+  const idForDel = event.target
+    .closest(".photo-grid__item")
+    .querySelector(".photo-grid__item-image").id;
+  deleteCardFromServer(idForDel)
+    .then(event.target.closest(".photo-grid__item").remove())
+    .catch((err) => {
+      console.log(`Удаление карточки  ${err}`);
+    });
 }
 
+function likePicture(event) {
+  const idForLike = event.target
+    .closest(".photo-grid__item")
+    .querySelector(".photo-grid__item-image").id;
+  const like = event.target
+    .closest(".photo-grid__like-button");
+    
+  const likesCount = event.target
+    .closest(".photo-grid__like-area")
+    .querySelector(".photo-grid__liked-count");
+  if (!like.classList.contains("photo-grid__like-button_liked")) {
+    putLike(idForLike)
+      .then((data) => {likesCount.textContent = data.likes.length;
+        like.classList.add("photo-grid__like-button_liked");
+       })
+      .catch((err) => {
+        console.log(`Установка лайка  ${err}`);
+      });
+  } else {
+    deleteLike(idForLike)
+      .then((data) => {likesCount.textContent = data.likes.length;
+        like.classList.remove("photo-grid__like-button_liked");
+      })
+      .catch((err) => {
+        console.log(`Удаление лайка ${err}`);
+      });
+  }
+}
 
 export const createCard = (
   imglink,
@@ -34,6 +51,7 @@ export const createCard = (
   const card = gridtemplate.cloneNode(true);
   card.querySelector(".photo-grid__item-image").src = imglink;
   card.querySelector(".photo-grid__item-image").id = imgId;
+  card.querySelector(".photo-grid__item-image").alt= imgtitle;
   card.querySelector(".photo-grid__title").textContent = imgtitle;
   card.querySelector(".photo-grid__liked-count").textContent = likecount;
 

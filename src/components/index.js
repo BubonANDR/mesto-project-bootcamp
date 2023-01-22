@@ -1,5 +1,4 @@
 import './../pages/index.css';
-
 import { addInitialCards, createCard } from "./cards.js";
 import { openPopup, closePopup } from "./modal.js";
 import { enableValidation, openClear } from "./validation.js";
@@ -15,26 +14,6 @@ import { escapeKeydown, putSavedStatus, putSavingStatus } from "./utils.js";
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 const profileAvatar = document.querySelector(".profile__avatar");
-
-const getProfileFromServer = () => {
-  getUser()
-    .then((data) => {
-      profileTitle.textContent = data.name;
-      profileSubtitle.textContent = data.about;
-      profileAvatar.src = data.avatar;
-    })
-    .catch((err) => {
-      profileTitle.textContent = "";
-      profileSubtitle.textContent = "";
-      profileAvatar.src = "#";
-      console.log(err);
-    });
-};
-const getCardsFromServer = () =>
-  getCards().then((data) => {
-    addInitialCards(data, photoGrid, gridTemplate);
-  });
-
 const formProfile = document.forms.profileform;
 const avatarForm = document.forms.avatarform;
 const nameInput = formProfile.elements.nameinput;
@@ -54,8 +33,16 @@ const gridTemplate = document
   .querySelector("#grid-item")
   .content.querySelector(".photo-grid__item");
 
-getProfileFromServer();
-getCardsFromServer();
+Promise.all([getUser(), getCards()])
+  .then(([user, cards]) => {
+    profileTitle.textContent = user.name;
+    profileSubtitle.textContent = user.about;
+    profileAvatar.src = user.avatar;
+    addInitialCards(cards, photoGrid, gridTemplate);
+  })
+  .catch((err) => {
+    console.log(`Загрузка ${err}`);
+  });
 
 profileEditButton.addEventListener("click", () => {
   openClear(profilePopup);
@@ -73,19 +60,30 @@ avatarPicture.addEventListener("click", () => {
 avatarForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
   putSavingStatus(avatarForm);
-  saveEditAvatar(avatarLinkInput.value);
-  getProfileFromServer();
-  putSavedStatus(avatarForm);
-  closePopup(avatarForm.closest(".popup"));
+  saveEditAvatar(avatarLinkInput.value)
+    .then((data) => {
+      avatarPicture.src = data.avatar;
+      putSavedStatus(avatarForm);
+      closePopup(avatarForm.closest(".popup"));
+    })
+    .catch((err) => {
+      console.log(`Загрузка аватара ${err}`);
+    });
 });
 
 formProfile.addEventListener("submit", function (evt) {
   evt.preventDefault();
   putSavingStatus(formProfile);
-  saveEditProfile(nameInput.value, aboutInput.value);
-  getProfileFromServer();
-  putSavedStatus(formProfile);
-  closePopup(formProfile.closest(".popup"));
+  saveEditProfile(nameInput.value, aboutInput.value)
+    .then((data) => {
+      profileTitle.textContent = data.name;
+      profileSubtitle.textContent = data.about;
+      putSavedStatus(formProfile);
+      closePopup(formProfile.closest(".popup"));
+    })
+    .catch((err) => {
+      console.log(`Редактирование профиля ${err}`);
+    });
 });
 
 cardAddButton.addEventListener("click", () => {
@@ -102,10 +100,12 @@ formCard.addEventListener("submit", function (evt) {
     photoGrid.prepend(
       createCard(data.link, data.name, data._id, 0, gridTemplate)
     );
+    putSavedStatus(formCard);
+    closePopup(formCard.closest(".popup"));
+    formCard.reset();
+  }).catch((err) => {
+    console.log(`Сохранение карточки ${err}`);
   });
-  putSavedStatus(formCard);
-  closePopup(formCard.closest(".popup"));
-  formCard.reset();
   evt.preventDefault();
 });
 
@@ -118,18 +118,7 @@ document.addEventListener("click", (evt) => {
   }
 });
 
-document.addEventListener("keydown", (evt) => {
-  const popupOpened = document.querySelector(".popup_opened");
-  if (popupOpened) {
-    escapeKeydown(evt, popupOpened);
-  }
-  return document.removeEventListener("keydown", (evt) => {
-    const popupOpened = document.querySelector(".popup_opened");
-    if (popupOpened) {
-      escapeKeydown(evt, popupOpened);
-    }
-  });
-});
+
 
 enableValidation({
   formSelector: ".popup__form",
