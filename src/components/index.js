@@ -25,7 +25,7 @@ const avatarPopup = document.querySelector(".popup__edit-avatar");
 const avatarPicture = document.querySelector(".profile__avatar");
 const cardAddButton = document.querySelector(".profile__add-button");
 const cardAddPopup = document.querySelector(".popup__add-card");
-export const pictPopupLink = document.querySelector(".popup__picture");
+export const pictPopupImage = document.querySelector(".popup__picture");
 export const pictPopupTitle = document.querySelector(".popup__picture-title");
 export const pictPopup = document.querySelector(".popup__place-picture");
 const photoGrid = document.querySelector(".photo-grid");
@@ -63,12 +63,12 @@ avatarForm.addEventListener("submit", function (evt) {
   saveEditAvatar(avatarLinkInput.value)
     .then((data) => {
       avatarPicture.src = data.avatar;
-      putSavedStatus(avatarForm);
       closePopup(avatarForm.closest(".popup"));
     })
     .catch((err) => {
       console.log(`Загрузка аватара ${err}`);
-    });
+    })
+    .finally(()=>putSavedStatus(avatarForm));
 });
 
 formProfile.addEventListener("submit", function (evt) {
@@ -78,12 +78,12 @@ formProfile.addEventListener("submit", function (evt) {
     .then((data) => {
       profileTitle.textContent = data.name;
       profileSubtitle.textContent = data.about;
-      putSavedStatus(formProfile);
       closePopup(formProfile.closest(".popup"));
     })
     .catch((err) => {
       console.log(`Редактирование профиля ${err}`);
-    });
+    })
+    .finally(()=>putSavedStatus(formProfile));
 });
 
 cardAddButton.addEventListener("click", () => {
@@ -96,16 +96,18 @@ const cardNameInput = formCard.elements.placeinput;
 
 formCard.addEventListener("submit", function (evt) {
   putSavingStatus(formCard);
-  saveCard(cardNameInput.value, cardLinkInput.value).then((data) => {
-    photoGrid.prepend(
-      createCard(data.link, data.name, data._id, 0, gridTemplate)
-    );
-    putSavedStatus(formCard);
-    closePopup(formCard.closest(".popup"));
-    formCard.reset();
-  }).catch((err) => {
-    console.log(`Сохранение карточки ${err}`);
-  });
+  saveCard(cardNameInput.value, cardLinkInput.value)
+    .then((data) => {
+      photoGrid.prepend(
+        createCard(data.link, data.name, data._id, 0, gridTemplate)
+      );
+      closePopup(formCard.closest(".popup"));
+      formCard.reset();
+    })
+    .catch((err) => {
+      console.log(`Сохранение карточки ${err}`);
+    })
+    .finally(()=>putSavedStatus(formCard));
   evt.preventDefault();
 });
 
@@ -117,8 +119,6 @@ document.addEventListener("click", (evt) => {
     closePopup(evt.target.closest(".popup"));
   }
 });
-
-
 
 enableValidation({
   formSelector: ".popup__form",

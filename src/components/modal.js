@@ -1,4 +1,4 @@
-import { pictPopupTitle, pictPopup, pictPopupLink } from "./index.js";
+import { pictPopupTitle, pictPopup, pictPopupImage } from "./index.js";
 import { escapeKeydown } from "./utils.js";
 export const closePopup = (somepopup) => {
   somepopup.classList.remove("popup_opened");
@@ -11,7 +11,8 @@ export const openPopup = (somepopup) => {
 };
 
 export function openPicture(event) {
-  pictPopupLink.src = event.target.closest(".photo-grid__item-image").src;
+  pictPopupImage.src = event.target.closest(".photo-grid__item-image").src;
+  pictPopupImage.alt = event.target.closest(".photo-grid__item-image").alt;
   pictPopupTitle.textContent = event.target
     .closest(".photo-grid__item")
     .querySelector(".photo-grid__title").textContent;
